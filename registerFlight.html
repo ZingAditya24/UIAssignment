@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8" lang="en">
+<head>
+	<title>XYZ Airlines</title>
+	<style type="text/css">
+
+		.header{
+			background-color: rgba(100,100,140,0.8);
+			height: 200px;
+		}
+		footer{
+			background-color: rgba(100,100,140,0.8);
+			position: fixed;
+			bottom: 30px;
+			font-size: 24px;
+			width: 99%;
+		}
+		section{
+			margin-top: 50px;
+			margin-left: 100px;
+			text-align: center;
+			font-size: 24px;
+			width: 75%;
+		}
+		table{
+			text-align: left;
+		}
+		input{
+			background: rgb(255, 255, 0);
+			color: rgb(255, 0, 0);
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+			<img src="xyz_logo.jpg" width="270px" height="180px" style="float: left;padding: 10px;" alt="Logo" title="XYZ Airlines">
+			<h1 align="center" style="padding-top: 70px; position: relative;">XYZ Airlines</h1>
+	</div>
+
+	<section>
+		<form method="post" action="confirmation.html" onsubmit="checkData()">
+		<table>
+			<tr>
+				<td style="color: rgb(0,0,255);">Flight Code: </td>
+				<td><input type"text" name="fcode" maxlength="10" pattern="[A-Za-z0-9]+" required="True" title="Enter only alphanumeric characters"></td>
+			</tr>
+
+			<tr>
+				<td style="color: rgb(0,0,255);">From: </td>
+				<td><input type="text" name="from" required="True" pattern="[A-Za-z]+" required="True" title="Enter only alphabetic characters"></td>
+			</tr>
+
+			<tr>
+				<td style="color: rgb(0,0,255);">To: </td>
+				<td><input type="text" name="to" required="True" pattern="[A-Za-z]+" required="True" title="Enter only alphabetic characters"></td>
+			</tr>
+
+			<tr>
+
+				<td style="color: rgb(0,0,255);">Departure Time: </td>
+				<td><input type="date" id="depDate" required="True" onchange="checkData()">
+					<input type="number" name="departureTime" id = "DepHr" required="True" min="0" max="23" onchange="checkData()"> hrs
+					:
+					<input type="number" name="departureTime" id = "DepMin" required="True" min="0" max="60" onchange="checkData()"> min</td>
+			</tr>
+
+			<tr>
+				<td style="color: rgb(0,0,255);">Arrival Time: </td>
+				<td>
+					<input type="number" name="arrivalTime" id = "ArrHr" required="True" min="0" max="23" onchange="checkData()"> hrs
+					:
+					<input type="number" name="arrivalTime" id = "ArrMin" required="True" min="0" max="60" onchange="checkData()"> min</td>
+			</tr>
+
+			<tr>
+				<td style="color: rgb(0,0,255);">Capacity: </td>
+				<td><input type="text" name="capacity" required="True"></td>
+			</tr>
+
+			<tr>
+				<td style="color: rgb(0,0,255);">Weekly Frequency: </td>
+				<td>
+					<input type="checkbox" name="Monday" value="Monday" checked>
+					<label for="Monday" style="color: rgb(0,0,255);">Monday</label>
+					<input type="checkbox" name="Tuesday" value="Tuesday">
+					<label for="Tuesday" style="color: rgb(0,0,255);">Tuesday</label>
+					<input type="checkbox" name="Wednesday" value="Wednesday">
+					<label for="Wednesday" style="color: rgb(0,0,255);">Wednesday</label>
+					<input type="checkbox" name="Thursday" value="Thursday">
+					<label for="Thursday" style="color: rgb(0,0,255);">Thursday</label>
+					<input type="checkbox" name="Friday" value="Friday">
+					<label for="Friday" style="color: rgb(0,0,255);">Friday</label>
+					<input type="checkbox" name="Saturday" value="Saturday">
+					<label for="Saturday" style="color: rgb(0,0,255);">Saturday</label>
+					<input type="checkbox" name="Sunday" value="Sunday">
+					<label for="Sunday" style="color: rgb(0,0,255);">Sunday</label>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<input type="submit" name="submit" style="font-size: 22px;background-color: rgba(0,255,0,0.6);color: rgb(0,0,0);">
+		</form>
+
+	</section>
+
+	<footer>
+		To Contact Us:<br>
+		Email Id : xyz@gmail.com<br>
+		Address #112,XYZ Airline Office, Nariman Point, Mumbai-06, India<br>
+		For any other help: Visit our website <a href="https://www.google.com">www.xyz.help.com</a><br>
+		</div>
+	</footer>
+
+	<script>
+                    var today1 = new Date();
+                    var dd1 = today1.getDate();
+                    var mm1 = today1.getMonth()+1; //January is 0!
+
+                    var depHr = document.getElementById("DepHr").value;
+                    var depMin = document.getElementById("DepMin").value;
+                    var arrHr = document.getElementById("ArrHr").value;
+                    var arrMin = document.getElementById("ArrMin").value;
+
+                    var yyyy1 = today1.getFullYear();
+                    if(dd1<10){
+                    dd1='0'+dd1;
+                    } 
+                    if(mm1<10){
+                    mm1='0'+mm1;
+                    } 
+                    var hello = yyyy1+"-"+mm1+"-"+dd1;
+                    
+
+                    var x = document.getElementById("depDate");
+                    x.value = hello;    
+
+
+                    function checkData(){
+
+                        var date = document.getElementById("depDate").value;
+
+                        if((date < hello) || depHr > arrHr) {
+                          alert("Select valid date!");
+                          return 0;
+                        }
+
+                    }
+
+                    function check(){
+                    	if(checkData() != 0){
+                    		return true;
+                    	}
+                    }
+
+        </script>
+</body>
+</html>
+
